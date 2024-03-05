@@ -1,0 +1,37 @@
+@media (min-width: 1px) and (max-width: 605px) {
+  .comand-center
+  {
+    flex-direction: row;
+    top: 0.3dvh;
+    left: 25%;
+    height: 14dvh;
+    width: 50dvw;
+  }
+  .cnt
+{
+  position: relative;
+
+}
+.btn-cnt
+{
+  position: relative;
+
+  min-width: 3dvw;
+  height: 3dvw;
+
+}
+#btn-progresso {
+  left: auto;
+  top: 7.8dvh;
+
+}
+.cnt-recursos
+{
+ position: relative;
+ 
+}
+}
+
+@media (min-width: 605px) and (max-width: 605px) {
+  
+}

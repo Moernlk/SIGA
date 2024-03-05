@@ -1,0 +1,128 @@
+
+.comand-center
+{
+  position: relative;
+  display:flex;
+  
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-around;
+
+  border: 0.1dvh  rgba(0, 0, 0, 0.5);
+  
+  width: 37.5dvw;
+  height:15dvh;
+    
+  z-index: 1;
+
+}
+.cnt{
+  display:contents;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  border: 1px solid black;
+
+}
+
+ .btn-progresso,.btn-agenda,.btn-recursos{
+  position:relative;
+
+  width: 3dvw;
+  height: 3dvw;
+  background-color: rgba(159, 255, 151, 0.514);
+  border: grey 0.1dvw solid ;
+  border-style: dashed;
+  border-radius: 5dvw;
+}
+.btn-agenda:hover, .btn-recursos:hover, .btn-progresso:hover
+{
+  cursor: pointer;
+  background-color: #a0ff97ab;
+
+}
+.btn-progresso:active, .btn-agenda:active,.btn-recursos:active{
+  background-color: rgba(160, 255, 151, 0.800);
+
+}
+
+.popup-informations{
+  position: absolute;
+  display: block;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  opacity: 0;
+}
+
+.btn-progresso:hover .popup-informations,
+.btn-agenda:hover .popup-informations,
+.btn-recursos:hover .popup-informations {
+  display:flex;
+  
+  position: absolute;
+
+  font-family: Roboto, Arial, sans-serif; 
+  font-size: 12px;
+  
+  background-color: rgb(101, 101, 101);
+  color: white;
+
+
+  border-radius: 3px;
+  
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  opacity:initial;
+  transition: opacity 0.5s;
+
+  z-index: 100;
+
+
+  white-space: nowrap;
+
+
+}
+#progresso-name{
+
+top: 60px;
+left: -5px;
+}
+
+#agenda-name{
+  top: 60px;
+
+}
+#recursos-name{
+  top: 60px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

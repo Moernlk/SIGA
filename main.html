@@ -4,62 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>Document</title>
-
-    <style>
-      .background-grid {
-        position: absolute;
-        display: grid;
-        grid-column: auto;
-        grid-template-columns: auto auto auto auto auto auto auto auto;
-
-        grid-row: auto;
-        grid-template-rows: auto auto auto;
-
-        background-color: rgb(196, 220, 248);
-        width: 100dvh;
-
-        top: 50vh;
-        left: 50vh;
-
-        align-items: center;
-        justify-content: center;
-        align-content: center;
-      }
-      .grid {
-        position: relative;
-        background-color: rgba(99, 99, 99, 0);
-        border: 0.1dvh solid rgba(138, 138, 138, 0.219);
-        align-items: center;
-        justify-content: center;
-        width: 25dvh;
-        height: 25dvh;
-      }
-
-      * {
-        margin: 0 0 0 0;
-        width: 0;
-        height: 0;
-      }
-
-      body {
-        display: flex;
-        background-color: #c4dcf8;
-        overflow: hidden;
-      }
-      .conteiner {
-        position: absolute;
-        border: 0.1dvh solid #32394154;
-        border-radius: 10dvh;
-        background-color: #c4dcf86b;
-
-        top: 5%;
-        left: 3%;
-
-        width: 93%;
-        height: 90%;
-      }
-    </style>
+    <link rel="stylesheet" href="styles/background.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/comandcenter.css" />
+    <style></style>
   </head>
+
   <div class="background-grid">
     <div class="grid"></div>
     <div class="grid"></div>
@@ -87,6 +37,7 @@
     <div class="grid"></div>
     <div class="grid"></div>
     <div class="grid"></div>
+
     <div class="grid"></div>
     <div class="grid"></div>
     <div class="grid"></div>
@@ -96,15 +47,28 @@
     <div class="grid"></div>
     <div class="grid"></div>
   </div>
-
   <body>
     <div class="conteiner">
-      <div class="central">
-        <div class="btn-progresso"></div>
+      <div class="comand-center">
+        <div class="cnt">
+          <button class="btn-progresso" id="btn-progresso">
+            <div id="progresso-name" class="popup-informations">progresso</div>
+          </button>
+        </div>
 
-        <div class="btn-agenda"></div>
+        <div class="cnt">
+          <a class="cnt" href="progresso.html">
+            <button class="btn-agenda" id="btn-agenda">
+              <div id="agenda-name" class="popup-informations">agenda</div>
+            </button>
+          </a>
+        </div>
 
-        <div class="btn-recursos"></div>
+        <div class="cnt">
+          <button class="btn-recursos" id="btn-recursos">
+            <div id="recursos-name" class="popup-informations">recursos</div>
+          </button>
+        </div>
       </div>
     </div>
   </body>
