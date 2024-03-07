@@ -1,5 +1,5 @@
 
-.comand-center
+.comand-center-index
 {
   position: relative;
   display:flex;
@@ -16,6 +16,24 @@
   z-index: 1;
 
 }
+
+.comand-center
+{
+  position: absolute;
+  display:flex;
+  width: fit-content;
+  height:80dvh;
+  flex-direction: column;
+  align-content:center;
+  align-items:center;
+  justify-content: space-around;
+
+  border: 0.1dvh solid rgba(0, 0, 0, 0.048);
+  left: 2dvw;
+  z-index: 1;
+  
+}
+
 .cnt{
   display:contents;
   justify-content: center;
@@ -28,9 +46,13 @@
 
  .btn-progresso,.btn-agenda,.btn-recursos{
   position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   width: 3dvw;
   height: 3dvw;
+  
   background-color: rgba(159, 255, 151, 0.514);
   border: grey 0.1dvw solid ;
   border-style: dashed;
@@ -47,14 +69,17 @@
 
 }
 
+
 .popup-informations{
   position: absolute;
-  display: block;
+  display: flex;
   align-items: center;
   width: fit-content;
   height: fit-content;
+  justify-content:center;
   opacity: 0;
 }
+
 
 .btn-progresso:hover .popup-informations,
 .btn-agenda:hover .popup-informations,
@@ -100,6 +125,9 @@
 #recursos-name{
   top: 60px;
 
+}
+#home-name{
+  top: 60px;
 }
 
 

@@ -1,4 +1,12 @@
 
+.bg-area{
+  position: absolute;
+  display: flex;
+  width: 100dvw;
+  height: 100dvh;
+  justify-content: end;
+  align-items: end;
+}
 
 .background-grid {
   position:fixed;
@@ -9,21 +17,16 @@
   grid-row: auto ;
   grid-template-rows: auto  auto auto;
 
-  background-color: rgb(196, 220, 248);
-
-top: 50vh;
-left: 50vw;
-
-
 
   align-items: center;
   justify-content: center;
   align-content: center;
+  z-index: 1;
 }
 .grid {
   position: relative;
   background-color: rgba(99, 99, 99, 0);
-  border: 0.1dvh solid rgba(138, 138, 138, 0.219);
+  border: 0.1dvh solid rgba(255, 255, 255, 0.062);
   align-items: center;
   justify-content: center;
 
@@ -34,15 +37,16 @@ left: 50vw;
 @media  (min-height: 40dvw)  
 {
   .grid{
+    
     width: 25vh;
     height: 25vh;
   }
 }
-@media  (max-height: 40dvw)  
+@media  (max-height: 50dvw)  
 {
   .grid{
-    width: 25vw;
-    height: 25vw;
+    width: 12.5vw;
+    height: 12.5vw;
   }
 }
 
