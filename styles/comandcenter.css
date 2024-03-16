@@ -35,13 +35,27 @@
 }
 
 .cnt{
-  display:contents;
+  display:flex;
   justify-content: center;
   align-items: center;
+  image-orientation: from-image;
+  align-content: center;
   width: 100%;
   height: fit-content;
-  border: 1px solid black;
+  border: 1px  black;
+}
 
+.prg-btn-img{
+  position: relative;
+  display:flex;
+  
+  width: 2dvw;
+  height: 2dvw;
+
+  bottom: 1dvw;
+  right: 1dvw;
+  
+  z-index: 1.0;
 }
 
  .btn-progresso,.btn-agenda,.btn-recursos{
@@ -53,7 +67,7 @@
   width: 3dvw;
   height: 3dvw;
   
-  background-color: rgba(159, 255, 151, 0.514);
+  background-color: #a0ff97d2;
   border: grey 0.1dvw solid ;
   border-style: dashed;
   border-radius: 5dvw;
