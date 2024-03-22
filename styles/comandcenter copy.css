@@ -6,7 +6,7 @@
   
   flex-direction: row;
   align-items: center;
-  justify-content:space-between;
+  justify-content:space-around;
 
   border: 0.1dvh  rgba(0, 0, 0, 0.5);
   
@@ -55,7 +55,7 @@
   bottom: 1dvw;
   right: 1dvw;
   
-  z-index: 1;
+  z-index: 1.0;
 }
 
  .btn-progresso,.btn-agenda,.btn-recursos{
@@ -68,17 +68,13 @@
   height: 3dvw;
   
   background-color: #a0ff97d2;
-  border: grey 0.1dvw solid ;
-  border-style: solid;
+  border: grey 0.1dvw dashed ;
   border-radius: 5dvw;
-  z-index: 1;
-  transition: border-style 1s;
 }
-.btn-agenda:hover, .btn-recursos:hover, .btn-progresso:hover{
+.btn-agenda:hover, .btn-recursos:hover, .btn-progresso:hover
+{
   cursor: pointer;
-  background-color: #90ef87;
-  border-style: dashed;
-  transition: border-style 2s;
+  background-color: #a0ff97ab;
 
 }
 .btn-progresso:active, .btn-agenda:active,.btn-recursos:active{
@@ -95,9 +91,6 @@
   height: fit-content;
   justify-content:center;
   opacity: 0;
-
-  pointer-events: none;
-  white-space: nowrap;
 }
 
 
@@ -109,18 +102,18 @@
   position: absolute;
 
   font-family: Roboto, Arial, sans-serif; 
-  font-size: 1.8dvh;
+  font-size: 12px;
   
   background-color: rgb(101, 101, 101);
   color: white;
 
 
-  border-radius: 0.3dvh;
+  border-radius: 3px;
   
-  padding-left: 0.5dvh;
-  padding-right: 0.5dvh;
-  padding-top: 0.5dvh;
-  padding-bottom: 0.5dvh;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 
   opacity:initial;
   transition: opacity 0.5s;
@@ -132,27 +125,22 @@
 
 
 }
-.popup-informations:hover{
-  opacity: 0;
-  cursor: unset;
-
-}
 #progresso-name{
   position: absolute;
-  top: 9dvh;
+  top: 60px;
   
 }
 
 #agenda-name{
-  top: 9dvh;
+  top: 60px;
 
 }
 #recursos-name{
-  top: 9dvh;
+  top: 60px;
 
 }
 #home-name{
-  top: 9dvh;
+  top: 60px;
 }
 
 
