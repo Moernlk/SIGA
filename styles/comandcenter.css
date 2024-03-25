@@ -8,7 +8,7 @@
   align-items: center;
   justify-content:space-between;
 
-  border: 0.1dvh  rgba(0, 0, 0, 0.5);
+  border: 0.1dvh solid rgba(0, 0, 0, 0.938);
   
   width: 37.5dvw;
   height:15dvh;
@@ -28,7 +28,7 @@
   align-items:center;
   justify-content: space-around;
 
-  border: 0.1dvh solid rgba(0, 0, 0, 0.048);
+  border: 0.1dvh solid rgba(0, 0, 0, 0.938);
   left: 2dvw;
   z-index: 1;
   
@@ -42,7 +42,7 @@
   align-content: center;
   width: 100%;
   height: fit-content;
-  border: 1px  black;
+  border: 1px   black;
 }
 
 .prg-btn-img{
@@ -59,7 +59,7 @@
 }
 
  .btn-progresso,.btn-agenda,.btn-recursos{
-  position:relative;
+  position:absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,6 +140,7 @@
 #progresso-name{
   position: absolute;
   top: 9dvh;
+  resize: none;
   
 }
 
@@ -160,6 +161,87 @@
 
 
 
+@media  (min-height: 150dvw)  
+{
+  .comand-center-index{
+    
+    flex-direction: column;
+    height: 50dvh;
+
+  }
+  .btn-progresso,.btn-agenda,.btn-recursos {
+    width: 10dvw;
+    height: 10dvw;
+    
+  }
+  .prg-btn-img{
+    width: 7dvw;
+    height: 7dvw;
+  
+    bottom: 3.5dvw;
+    right: 3.5dvw;
+  }
+
+
+}
+
+@media  (min-height: 125dvw) and (max-height: 150dvw)
+{
+  .comand-center-index{
+    
+    flex-direction: column;
+    height: 50dvh;
+
+  }
+  .btn-progresso,.btn-agenda,.btn-recursos {
+    width: 7.5dvw;
+    height: 7.5dvw;
+    
+  }
+  .prg-btn-img{
+    width: 5.5dvw;
+    height: 5.5dvw;
+  
+    bottom: 2.9dvw;
+    right: 2.8dvw;
+  }
+
+
+}
+@media  (min-height: 100dvw) and (max-height: 125dvw)
+{
+  .comand-center-index{
+    
+    flex-direction: column;
+    height: 50dvh;
+
+  }
+  .btn-progresso,.btn-agenda,.btn-recursos {
+    width: 5.5dvw;
+    height: 5.5dvw;
+    
+  }
+  .prg-btn-img{
+    width: 3.7dvw;
+    height: 3.7dvw;
+  
+    bottom: 2dvw;
+    right: 1.9dvw;
+  }
+
+
+}
+
+
+@media  (max-height: 50dvw)  
+{
+  .comand-center-index{
+    
+    flex-direction: row;
+    
+  }
+
+}
 
 
 
