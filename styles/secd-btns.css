@@ -45,13 +45,21 @@
   border-style: solid;
   border-radius: 4dvw;
 
-  transition: margin 1s, border-style 1s;
+  transition: margin 1s, border-style 1s, background-color 2s;
 
   
 }
 
 #btn-secd1:hover,#btn-secd2:hover, #btn-secd3:hover,#btn-secd4:hover{
   border-style: dashed;
+  background-color:whitesmoke;
+  transition: margin 1s, border-style 1s, background-color 1s;
+
+}
+#btn-secd1:active,#btn-secd2:active, #btn-secd3:active,#btn-secd4:active{
+  border-style: dashed;
+  background-color:rgba(245, 245, 245, 0.363);
+  transition: margin 1s, border-style 1s, background-color 0s;
 
 }
 
@@ -108,7 +116,7 @@
 
   width: 3dvh;
   height: 3dvh;
-  margin: 2dvh;
+  margin: 2.2dvh;
   
   background-color: #a0ff97d2;
   border: grey 0.1dvw solid ;
@@ -117,3 +125,45 @@
   transition: margin 1s;
   
 }
+
+
+#progresso-name,
+#agenda-name,
+#recursos-name,
+#home-name{
+  position: absolute;
+  top: 9dvh;
+  resize: none;
+  
+}
+#hora-name,
+#hist-name{
+  display: absolute;
+  top: 3.5dvh;
+  left: 0.81dvw;
+
+}
+#prova-name,
+#extraC-name,
+#ensino-name{
+  display: absolute;
+  top: 11dvh;
+  left: -1dvw;
+  font-size: 10;
+
+}
+#calendario-name,
+#secret-name,
+#notas-name{
+  display: absolute;
+  top: 3.5dvh;
+  right: 1dvw;
+}
+#library-name,
+#faltas-name{
+
+  display: absolute;
+  top: 11dvh;
+  right: 1dvw;
+}
+

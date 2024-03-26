@@ -38,10 +38,11 @@
   display:flex;
   justify-content: center;
   align-items: center;
-  image-orientation: from-image;
+
   align-content: center;
   width: 100%;
   height: fit-content;
+  
   border: 1px   black;
 }
 
@@ -54,6 +55,21 @@
 
   bottom: 1dvw;
   right: 1dvw;
+
+  
+  z-index: 1;
+}
+
+.sec-btn-img{
+  position: relative;
+  display:flex;
+  
+  width: 4dvw;
+  height: 4dvw;
+
+  bottom: 2dvw;
+  right: 2dvw;
+
   
   z-index: 1;
 }
@@ -62,10 +78,11 @@
   position:absolute;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:center;
 
   width: 3dvw;
   height: 3dvw;
+
   
   background-color: #a0ff97d2;
   border: grey 0.1dvw solid ;
@@ -100,10 +117,40 @@
   white-space: nowrap;
 }
 
+.btns-rec:hover .popup-informations,
+.btns-prg:hover .popup-informations,
+.btns-agd:hover .popup-informations
+{
+  display:flex;
+  
+  position: absolute;
 
+  font-family: Roboto, Arial, sans-serif; 
+  font-size: 1.8dvh;
+  
+  background-color: rgb(101, 101, 101);
+  color: white;
+
+
+  border-radius: 0.3dvh;
+  
+  padding-left: 0.5dvh;
+  padding-right: 0.5dvh;
+  padding-top: 0.5dvh;
+  padding-bottom: 0.5dvh;
+
+  opacity:initial;
+  transition: opacity 0.5s;
+
+  z-index: 100;
+
+
+  white-space: nowrap;
+}
 .btn-progresso:hover .popup-informations,
 .btn-agenda:hover .popup-informations,
-.btn-recursos:hover .popup-informations {
+.btn-recursos:hover .popup-informations 
+{
   display:flex;
   
   position: absolute;
@@ -137,31 +184,12 @@
   cursor: unset;
 
 }
-#progresso-name{
-  position: absolute;
-  top: 9dvh;
-  resize: none;
-  
-}
-
-#agenda-name{
-  top: 9dvh;
-
-}
-#recursos-name{
-  top: 9dvh;
-
-}
-#home-name{
-  top: 9dvh;
-}
 
 
 
 
 
-
-@media  (min-height: 150dvw)  
+@media  (min-height: 145dvw)  
 {
   .comand-center-index{
     
@@ -172,6 +200,7 @@
   .btn-progresso,.btn-agenda,.btn-recursos {
     width: 10dvw;
     height: 10dvw;
+
     
   }
   .prg-btn-img{
@@ -180,12 +209,23 @@
   
     bottom: 3.5dvw;
     right: 3.5dvw;
+    border-color:aqua;
   }
 
 
+
+  .sec-btn-img{
+    min-width: 3dvw;
+    min-height: 3dvw;
+    max-width: 3dvw;
+    max-height: 3dvw;
+  
+    bottom: 1.5dvw;
+    right: 1.5dvw;
+  }
 }
 
-@media  (min-height: 125dvw) and (max-height: 150dvw)
+@media  (min-height: 120dvw) and (max-height: 145dvw)
 {
   .comand-center-index{
     
@@ -196,7 +236,7 @@
   .btn-progresso,.btn-agenda,.btn-recursos {
     width: 7.5dvw;
     height: 7.5dvw;
-    
+
   }
   .prg-btn-img{
     width: 5.5dvw;
@@ -205,10 +245,19 @@
     bottom: 2.9dvw;
     right: 2.8dvw;
   }
+  .sec-btn-img{
+    width: 3dvw;
+    height: 3dvw;
+  
+    bottom: 1.5dvw;
+    right: 1.5dvw;
+  }
 
 
 }
-@media  (min-height: 100dvw) and (max-height: 125dvw)
+
+
+@media  (min-height: 90dvw) and (max-height: 120dvw)
 {
   .comand-center-index{
     
@@ -219,6 +268,7 @@
   .btn-progresso,.btn-agenda,.btn-recursos {
     width: 7dvw;
     height: 7dvw;
+
     
   }
   .prg-btn-img{
@@ -228,6 +278,15 @@
     bottom: 2dvw;
     right: 2dvw;
   }
+
+.sec-btn-img{
+  width:2dvw;
+  height: 2dvw;
+
+  bottom: 1dvw;
+  right: 1dvw;
+}
+
 
 
 }
@@ -252,9 +311,18 @@
     bottom: 1.8dvw;
     right: 1.8dvw;
   }
+  .sec-btn-img{
+    width: 1.8dvw;
+    height: 1.8dvw;
+  
+    bottom: 1dvw;
+    right: 0.9dvw;
+  }
 
 
 }
+
+
 @media  (min-height: 60dvw) and (max-height: 75dvw)  
 {
   .comand-center-index{
@@ -274,9 +342,18 @@
     bottom: 1.5dvw;
     right: 1.5dvw;
   }
+  .sec-btn-img{
+    width: 1.5dvw;
+    height: 1.5dvw;
+  
+    bottom: 0.8dvw;
+    right: 0.8dvw;
+  }
 
 
 }
+
+
 @media (max-height: 60dvw)  
 {
   .comand-center-index{
@@ -288,6 +365,8 @@
     width: 3.5dvw;
     height: 3.5dvw;
     
+
+    
   }
   .prg-btn-img{
     width: 2.3dvw;
@@ -296,27 +375,40 @@
     bottom: 1.2dvw;
     right: 1.2dvw;
   }
+  .sec-btn-img{
+    width: 1dvw;
+    height: 1dvw;
+    
+    bottom: 0.5dvw;
+    right: 0.5dvw;
 
 
 
 }
 
 
+}
+@media (max-height: 50dvw)  
+{
+  .cnt .btns-rec,
+  .cnt .btns-agd, 
+  .cnt .btns-prg
+  {
+
+    width: 1.8dvw;
+    height: 1.8dvw;
+    margin: 0.9dvw;
+  }
+  .sec-btn-img{
+    width: 1.2dvw;
+    height: 1.2dvw;
+    
+    bottom: 0.6dvw;
+    right: 0.6dvw;
+  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
