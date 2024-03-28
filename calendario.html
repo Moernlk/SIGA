@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Divs with JavaScript</title>
+    <link rel="stylesheet" href="/styles/background.css" />
+    <style>
+      /* CSS styles for the divs */
+      * {
+        -webkit-user-drag: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: black;
+        display: flex;
+        width: 99vw;
+        height: 98vh;
+        align-items: center;
+        justify-content: center;
+      }
+      .semestre {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        flex-wrap: wrap;
+        width: fit-content;
+        height: fit-content;
+        border: yellow;
+
+      }
+      .mes {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 297.5px;
+        height: 300px;
+        margin: 1px;
+      }
+      .weekSection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+      #week {
+        position: relative;
+        width: calc(100% / 8); /* Adjust the width as needed */
+        height: 100%; /* Adjust the height as needed */
+        background-color: #607d8b; /* Adjust background color as needed */
+        border: 0.5px solid #3f5b69;
+      }
+
+      .daysSection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: baseline;
+        align-items: center;
+        width: 100%;
+        height: 85%;
+      }
+
+      .week, .day {
+        position: relative;
+        width: 40.5px; /* Adjust the width as needed */
+        height: 48px; /* Adjust the height as needed */
+        background-color: #607d8b; /* Adjust background color as needed */
+        border: 0.5px solid #3f5b69;
+        padding: 0;
+        margin: 0; /* Adjust margin as needed */
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="agenda"></div>
+
+    <script>
+      // JavaScript code to create dynamic divs
+      function createDivs() {
+        const agenda = document.getElementById("agenda");
+        agenda.className = "agenda";
+
+        agenda.innerHTML = "";
+
+        const semestre = document.createElement("div");
+        semestre.className = "semestre";
+        agenda.appendChild(semestre);
+
+        // Clear existing content
+
+        const numDivs = 35;
+        const dayoftheweek = 0;
+        const lWeek = ["D", "S", "T", "Q", "Q", "S", "S"];
+        for (m = 0; m < 4; m++) {
+          const mes = document.createElement("div");
+          mes.className = "mes";
+          semestre.appendChild(mes);
+
+          const weekSection = document.createElement("div");
+          weekSection.className = "weekSection";
+          mes.appendChild(weekSection);
+          const daysSection = document.createElement("div");
+          daysSection.className = "daysSection";
+          mes.appendChild(daysSection);
+
+          for (w = 0; w < 7; w++) {
+            const week = document.createElement("week");
+            week.className = "week";
+            weekSection.appendChild(week);
+            week.innerText = lWeek[w];
+          }
+
+          for (let d = 0; d < numDivs; d++) {
+            const day = document.createElement("div");
+            day.className = "day";
+            daysSection.appendChild(day);
+
+            
+
+
+            if (0 > d || d > 30) {
+              day.style.background = "#3f5b69";
+              
+              day.style.color = "transparent";
+              day.innerText = d + 1;
+              day.style.cursor = "initial";
+              day.style.pointerEvents = "none";
+            } else {
+              day.innerText = d + 1;
+              day.style.cursor = "pointer";
+
+              day.addEventListener("mouseover", function () {
+                day.style.backgroundColor = "#3f5b69";
+                day.style.transition = "background-color 1s";
+              });
+
+              day.addEventListener("click", function () {
+                day.style.backgroundColor = "#2d4855";
+                day.style.color = "white";
+                day.style.transition = "background-color 0.3s";
+              });
+              day.addEventListener("mouseout", function () {
+                day.style.backgroundColor = "#607d8b";
+                day.style.color = "initial";
+                day.style.transition = "background-color 0.3s, color 0.5s";
+              });
+            }
+          }
+        }
+      }
+      /*
+        const vw = Math.max(
+          document.documentElement.clientWidth || 0,
+          window.innerWidth || 0
+        ); // Get viewport width
+      */
+
+      // Call the function initially and attach it to window resize event
+      createDivs();
+      window.addEventListener("resize", createDivs);
+    </script>
+  </body>
+</html>
