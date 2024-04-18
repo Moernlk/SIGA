@@ -4,14 +4,18 @@
   <head>
     <meta charset="UTF-8" />
     <title>HomePage</title>
-    <link rel="icon" type="image/x-icon" href="/img/home.png" />
+    <link rel="icon" type="image/x-icon" href="/img/home/home.png" />
     <link rel="stylesheet" href="styles/background.css" />
     <link rel="stylesheet" href="styles/cup.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/comandcenter.css" />
     <link rel="stylesheet" href="styles/secd-btns.css" />
 
-    <style></style>
+    <style>
+      * {
+        -webkit-user-drag: none;
+      }
+    </style>
   </head>
   <div class="bg-area">
     <div class="background-grid">
@@ -65,11 +69,18 @@
 
           <div class="agd-btns-area" id="agenda-sec-btn">
             <button class="btns-agd" id="btn-secd1">
-              <a href=""></a>
-              <div>
-                <img class="sec-btn-img" src="/img/agenda/calendario.png" />
-              </div>
-              <div id="calendario-name" style="right: 0.3dvw;" class="popup-informations">Calendário</div>
+              <a href="/calendario.html">
+                <div>
+                  <img class="sec-btn-img" src="/img/agenda/calendario.png" />
+                </div>
+                <div
+                  id="calendario-name"
+                  style="right: 0.3dvw"
+                  class="popup-informations"
+                >
+                  Calendário
+                </div>
+              </a>
             </button>
             <button class="btns-agd" id="btn-secd4">
               <div>
@@ -81,7 +92,13 @@
               <div>
                 <img class="sec-btn-img" src="/img/agenda/provas.png" />
               </div>
-              <div id="prova-name" style="left:1dvw;" class="popup-informations">Provas</div>
+              <div
+                id="prova-name"
+                style="left: 1dvw"
+                class="popup-informations"
+              >
+                Provas
+              </div>
             </button>
           </div>
         </div>
@@ -98,37 +115,27 @@
               <div>
                 <img class="sec-btn-img" src="/img/progresso/grade.png" />
               </div>
-              <div id="notas-name" class="popup-informations">
-                Notas
-              </div>
+              <div id="notas-name" class="popup-informations">Notas</div>
             </button>
             <button class="btns-prg" id="btn-secd2">
               <div>
                 <img class="sec-btn-img" src="/img/progresso/faltas.png" />
               </div>
-              <div id="faltas-name" class="popup-informations">
-                Faltas
-              </div>
-
+              <div id="faltas-name" class="popup-informations">Faltas</div>
             </button>
             <button class="btns-prg" id="btn-secd3">
               <div>
                 <img class="sec-btn-img" src="/img/progresso/materias.png" />
               </div>
-              <div id="ensino-name" class="popup-informations">
-                Matérias
-              </div>
+              <div id="ensino-name" class="popup-informations">Matérias</div>
             </button>
             <button class="btns-prg" id="btn-secd4">
               <div>
                 <img class="sec-btn-img" src="/img/progresso/historico.png" />
               </div>
-              <div id="hist-name" class="popup-informations">
-                Histórico
-              </div>
+              <div id="hist-name" class="popup-informations">Histórico</div>
             </button>
           </div>
-
         </div>
 
         <div class="cnt">
@@ -154,9 +161,14 @@
             </button>
             <button class="btns-rec" id="btn-secd3">
               <div>
-                <img class="sec-btn-img" src="/img/recursos/extraCurricular1.png" />
+                <img
+                  class="sec-btn-img"
+                  src="/img/recursos/extraCurricular1.png"
+                />
               </div>
-              <div id="extraC-name" class="popup-informations">Extra-Curriculares</div>
+              <div id="extraC-name" class="popup-informations">
+                Extra-Curriculares
+              </div>
             </button>
           </div>
         </div>
