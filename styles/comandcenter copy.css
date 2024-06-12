@@ -93,7 +93,12 @@
   opacity: 0;
 }
 
+.btns-rec:hover .popup-informations,
+.btns-agd:hover .popup-informations,
+.btns-prg:hover .popup-informations
+{
 
+}
 .btn-progresso:hover .popup-informations,
 .btn-agenda:hover .popup-informations,
 .btn-recursos:hover .popup-informations {
@@ -142,10 +147,6 @@
 #home-name{
   top: 60px;
 }
-
-
-
-
 
 
 

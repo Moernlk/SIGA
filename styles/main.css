@@ -31,7 +31,6 @@ body {
 
 .conteiner {
   position: absolute;
-  border-radius: 1dvh;
   background-color: #32394100;
 
   display: flex;

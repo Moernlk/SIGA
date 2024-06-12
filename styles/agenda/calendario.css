@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  width: 99vw;
+  height: 98vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.centralC {
+  position: absolute;
+  display: flex;
+  border: 5px red;
+  background-color: #ff080800;
+  flex-direction: column;
+  width: 10dvw;
+  height: 10dvh;
+}
+
+.agenda {
+  -webkit-user-drag: none;
+}
+
+.semestre {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  flex-wrap: wrap;
+  width: fit-content;
+  height: fit-content;
+  border: yellow;
+}
+.mes {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 300px;
+  height: 360px;
+  margin: 10px;
+}
+.weekSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#week {
+  position: relative;
+  width: calc(100% / 8); /* Adjust the width as needed */
+  height: 100%; /* Adjust the height as needed */
+  background-color: #607d8b; /* Adjust background color as needed */
+  border: 0.5px solid #3f5b69;
+}
+
+.daysSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: baseline;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+}
+
+.week,
+.day {
+  position: relative;
+  width: 40.5px; /* Adjust the width as needed */
+  height: 48px; /* Adjust the height as needed */
+  background-color: #607d8b; /* Adjust background color as needed */
+  border: 0.5px solid #3f5b69;
+  padding: 0;
+  text-align: center;
+  text-justify: distribute;
+  margin: 0; /* Adjust margin as needed */
+  display: inline-block;
+  border-radius: 50px;
+}

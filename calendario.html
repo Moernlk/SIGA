@@ -4,103 +4,154 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendário</title>
-    <link rel="stylesheet" href="/styles/background.css" />
+    <link rel="stylesheet" href="/styles/agenda/calendario.css" />
+    <link rel="stylesheet" href="styles/comandcenter.css" />
+    <link rel="stylesheet" href="styles/secd-btns.css" />
     <link rel="icon" href="/img/agenda/calendario.png" />
+    <link rel="icon" href="/styles/main.css" />
+
     <style>
-      /* CSS styles for the divs */
-      * {
-        margin: 0;
-        padding: 0;
-        justify-content: center;
-      }
 
-      body {
-        background-color: black;
-        display: flex;
-        width: 99vw;
-        height: 98vh;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .centralC {
-        position: absolute;
-        display: flex;
-        border: 1px red;
-        background-color: #ff080800;
-        flex-direction: column;
-        width: 50px;
-        height: 100%;
-      }
-
-      .agenda {
-        -webkit-user-drag: none;
-      }
-
-      .semestre {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-        flex-wrap: wrap;
-        width: fit-content;
-        height: fit-content;
-        border: yellow;
-      }
-      .mes {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-        justify-content: center;
-
-        width: 300px;
-        height: 360px;
-        margin: 10px;
-      }
-      .weekSection {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      #week {
-        position: relative;
-        width: calc(100% / 8); /* Adjust the width as needed */
-        height: 100%; /* Adjust the height as needed */
-        background-color: #607d8b; /* Adjust background color as needed */
-        border: 0.5px solid #3f5b69;
-      }
-
-      .daysSection {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: baseline;
-        align-items: center;
-        width: 100%;
-        height: fit-content;
-      }
-
-      .week,
-      .day {
-        position: relative;
-        width: 40.5px; /* Adjust the width as needed */
-        height: 48px; /* Adjust the height as needed */
-        background-color: #607d8b; /* Adjust background color as needed */
-        border: 0.5px solid #3f5b69;
-        padding: 0;
-        text-align: center;
-        text-justify: distribute;
-        margin: 0; /* Adjust margin as needed */
-        display: inline-block;
-        border-radius: 50px;
+      img {
+        top: 0px;
+        left: 0px;
       }
     </style>
   </head>
   <body>
+    <div class="conteiner" style="position: absolute; top: 0">
+      <div class="comand-center-index">
+        <div class="cnt">
+          <button class="btn-agenda" id="btn-agenda">
+            <div>
+              <img class="prg-btn-img" src="/img/agenda/agenda.png" />
+            </div>
+            <div id="agenda-name" class="popup-informations">Agenda</div>
+          </button>
+
+          <div class="agd-btns-area" id="agenda-sec-btn">
+            <button
+              class="btns-agd"
+              id="btn-secd1"
+              style="background-color: aliceblue; transition: none"
+            >
+              <a href="/index.html">
+                <div>
+                  <img class="sec-btn-img" src="/img/home/home.png" />
+                </div>
+                <div
+                  id="calendario-name"
+                  style="right: 0.3dvw"
+                  class="popup-informations"
+                >
+                  Home
+                </div>
+              </a>
+            </button>
+
+            <button class="btns-agd" id="btn-secd4">
+              <div>
+                <img class="sec-btn-img" src="/img/agenda/horarios.png" />
+              </div>
+              <div id="hora-name" class="popup-informations">Horarios</div>
+            </button>
+
+            <button class="btns-agd" id="btn-secd3">
+              <div>
+                <img class="sec-btn-img" src="/img/agenda/provas.png" />
+              </div>
+              <div
+                id="prova-name"
+                style="left: 1dvw"
+                class="popup-informations"
+              >
+                Provas
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="cnt">
+          <button class="btn-progresso" id="btn-progresso">
+            <div>
+              <img class="prg-btn-img" src="/img/progresso/progress.png" />
+            </div>
+            <div id="progresso-name" class="popup-informations">Progresso</div>
+          </button>
+          <div class="prg-btns-area">
+            <button class="btns-prg" id="btn-secd1">
+              <div>
+                <img class="sec-btn-img" src="/img/progresso/grade.png" />
+              </div>
+              <div id="notas-name" class="popup-informations">Notas</div>
+            </button>
+            <button class="btns-prg" id="btn-secd2">
+              <div>
+                <img class="sec-btn-img" src="/img/progresso/faltas.png" />
+              </div>
+              <div id="faltas-name" class="popup-informations">Faltas</div>
+            </button>
+            <button class="btns-prg" id="btn-secd3">
+              <div>
+                <img class="sec-btn-img" src="/img/progresso/materias.png" />
+              </div>
+              <div id="ensino-name" class="popup-informations">Matérias</div>
+            </button>
+            <button class="btns-prg" id="btn-secd4">
+              <div>
+                <img class="sec-btn-img" src="/img/progresso/historico.png" />
+              </div>
+              <div id="hist-name" class="popup-informations">Histórico</div>
+            </button>
+          </div>
+        </div>
+
+        <div class="cnt">
+          <button class="btn-recursos" id="btn-recursos">
+            <div>
+              <img class="prg-btn-img" src="/img/recursos/recursos.png" />
+            </div>
+            <div id="recursos-name" class="popup-informations">Recursos</div>
+          </button>
+
+          <div class="rec-btns-area">
+            <button class="btns-rec" id="btn-secd1">
+              <div>
+                <img class="sec-btn-img" src="/img/recursos/secretaria.png" />
+              </div>
+              <div id="secret-name" class="popup-informations">Secretaria</div>
+            </button>
+            <button class="btns-rec" id="btn-secd2">
+              <div>
+                <img class="sec-btn-img" src="/img/recursos/library.png" />
+              </div>
+              <div id="library-name" class="popup-informations">Biblioteca</div>
+            </button>
+            <button class="btns-rec" id="btn-secd3">
+              <div>
+                <img
+                  class="sec-btn-img"
+                  src="/img/recursos/extraCurricular1.png"
+                />
+              </div>
+              <div id="extraC-name" class="popup-informations">
+                Extra-Curriculares
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="agenda" draggable="true"></div>
     <div id="centralC" draggable="true"></div>
 
-    <script src="/script/calendario.js">
- /*     function Calendario() {
+    <script src="/script/calendario.js"></script>
+    <script type="text/javascript">
+      var isDown = false;
+      var position = [0, 0];
+      var mousePosition;
+      /*     function Calendario() {
         const agenda = document.getElementById("agenda");
         agenda.className = "agenda";
         // Cleaning exixting content
@@ -231,29 +282,62 @@
           window.innerWidth || 0
         ); // Get viewport width
       */
-      
 
+      function Year() {}
       function MoveC() {
         const centralC = document.getElementById("centralC");
         centralC.className = "centralC";
-        centralC.addEventListener("click", function () {
-          centralC.style.backgroundColor = "#2d4855";
-          centralC.style.color = "white";
-          centralC.style.transition = "background-color 0.3s";
-        });
-        document.addEventListener("DOMContentLoaded", function (event) {
-          let x = event.clientX;
-          let y = event.clientY;
-          centralC.addEventListener("drag", function () {
-            centralC.style.left = x;
-            centralC.style.top = y;
-            centralC.style.cursor = "move";
-          });
-        });
+
+        centralC.style.backgroundColor = "#2d4855";
+        centralC.style.color = "white";
+        centralC.style.transition = "background-color 0.3s";
+        centralC.style.cursor = "grab";
+        centralC.style.top = 0;
+        centralC.style.zIndex = 1;
+        centralC.style.left ="75%";
+
+        centralC.addEventListener(
+          "mousedown",
+          function (e) {
+            isDown = true;
+            position = [
+              centralC.offsetLeft - e.clientX,
+              centralC.offsetTop - e.clientY,
+            ];
+          },
+          true
+        );
+
+        document.addEventListener(
+          "mousemove",
+          function (e) {
+            event.preventDefault();
+            if (isDown) {
+              mousePosition = {
+                x: event.clientX,
+                y: event.clientY,
+              };
+              centralC.style.cursor = "move";
+              centralC.style.left = mousePosition.x + position[0] + "px";
+              centralC.style.top = mousePosition.y + position[1] + "px";
+            }
+          },
+          true
+        );
+        document.addEventListener(
+          "mouseup",
+          function () {
+            isDown = false;
+            centralC.style.cursor = "grab";
+          },
+          true
+        );
       }
 
-      Calendario();
+
+
       MoveC();
+      Cachelendario();
     </script>
   </body>
 </html>
