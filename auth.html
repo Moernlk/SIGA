@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HomePage</title>
+    <link rel="icon" type="image/x-icon" href="/img/home/home.png" />
+    <link rel="stylesheet" href="/styles/agenda/calendario-index.css" />
+
+    <style>
+      * {
+        -webkit-user-drag: none;
+        border: none;
+        width: fit-content;
+        height: fit-content;
+      }
+      body{
+        display:felx;
+        align-items: center;
+        justify-content: center;
+        height: 100dvh;
+        width: 100dvw;
+      }
+    </style>
+  </head>
+
+  <body id="body">
+    <div id="bg"></div>
+    <script type="text/javascript">
+      const body = document.getElementById('body');
+
+
+      function bg(){
+        body.innerHTML='<object type="text/html" data="background.html" id="bac"></object>';
+        const background = document.getElementById('bac');
+        background.style.width = "100vmax";
+        background.style.height = "100dvh";
+        background.style.border = "none";
+        background.style.position = "absolute";
+        background.style.zIndex = 0;
+      }
+      bg();
+    </script>
+  </body>
+</html>

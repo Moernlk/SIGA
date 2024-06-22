@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Divs with JavaScript</title>
+    <link rel="stylesheet" href="/styles/background.css" />
+    <style>
+      /* CSS styles for the divs */
+      * {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+      }
+
+      body {
+        background-color: black;
+        display: flex;
+        width: 99vw;
+        height: 98vh;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .centralC {
+        position: absolute;
+        display: flex;
+        border: 1px red;
+        background-color: #ff080800;
+        flex-direction: column;
+        width: 50px;
+        height: 50px;
+      }
+
+      .agenda {
+        -webkit-user-drag: none;
+      }
+
+      .semestre {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        flex-wrap: wrap;
+        width: fit-content;
+        height: fit-content;
+        border: yellow;
+      }
+      .mes {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 300px;
+        height: 360px;
+        margin: 10px;
+      }
+      .weekSection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #week {
+        position: relative;
+        width: calc(100% / 8); /* Adjust the width as needed */
+        height: 100%; /* Adjust the height as needed */
+        background-color: #607d8b; /* Adjust background color as needed */
+        border: 0.5px solid #3f5b69;
+      }
+
+      .daysSection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: baseline;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+      }
+
+      .week,
+      .day {
+        position: relative;
+        width: 40.5px; /* Adjust the width as needed */
+        height: 48px; /* Adjust the height as needed */
+        background-color: #607d8b; /* Adjust background color as needed */
+        border: 0.5px solid #3f5b69;
+        padding: 0;
+        margin: 0; /* Adjust margin as needed */
+        display: inline-block;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="agenda" draggable="true"></div>
+    <div id="centralC" draggable="true"></div>
+
+    <script>
+      function Calendario() {
+        const agenda = document.getElementById("agenda");
+        agenda.className = "agenda";
+        // Cleaning exixting content
+        agenda.innerHTML = "";
+
+        const semestre = document.createElement("div");
+        semestre.className = "semestre";
+        agenda.appendChild(semestre);
+
+        let dayoftheweek = 0;
+        let num = 0;
+
+        mesA = 1;
+        mesD = 0;
+
+
+        for (m = 0; m < 5; m++) {
+          const mes = document.createElement("div");
+          mes.className = "mes";
+          semestre.appendChild(mes);
+
+          const weekSection = document.createElement("div");
+          weekSection.className = "weekSection";
+          mes.appendChild(weekSection);
+          const daysSection = document.createElement("div");
+          daysSection.className = "daysSection";
+          mes.appendChild(daysSection);
+
+          const lWeek = ["D", "S", "T", "Q", "Q", "S", "S"];
+
+          for (w = 0; w < 7; w++) {
+            const week = document.createElement("week");
+            week.className = "week";
+            weekSection.appendChild(week);
+            week.innerText = lWeek[w];
+          }
+
+          const dMes = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+          const numDivs = 42;
+
+          for (let d = 0; d < numDivs; d++) {
+            const day = document.createElement("div");
+            day.className = "day";
+            daysSection.appendChild(day);
+
+            /*
+            if (d - dayoftheweek <= 0) {
+              day.style.color = "#00000050";
+              day.style.cursor = "none";
+              day.style.background = "#3f5b69";
+              dayoftheweek = dayoftheweek + 1;
+
+              day.style.pointerEvents = "none";
+            }
+            */
+            if(d > dMes[m] && d > 35 && dayoftheweek <= 4 ){
+  
+              
+              
+            }
+            if (num > 0 && num > dMes[m] && d <= 34) {
+              day.style.background = "#3f5b69";
+              day.innerText = num - dMes[m];
+              num = num + 1;
+
+              day.style.color = "";
+              day.style.cursor = "initial";
+              day.style.pointerEvents = "none";
+              dayoftheweek = dayoftheweek + 1;
+            }
+
+            if (num > 0 && num <= dMes[m]) {
+              day.innerText = num;
+              num = num + 1;
+              day.style.cursor = "pointer";
+
+              day.addEventListener("mouseover", function () {
+                day.style.backgroundColor = "#3f5b69";
+                day.style.transition = "background-color 1s";
+              });
+
+              day.addEventListener("click", function () {
+                day.style.backgroundColor = "#2d4855";
+                day.style.color = "white";
+                day.style.transition = "background-color 0.3s";
+              });
+              day.addEventListener("mouseout", function () {
+                day.style.backgroundColor = "#607d8b";
+                day.style.color = "initial";
+                day.style.transition = "background-color 0.3s, color 0.5s";
+              });
+            }
+            
+            if (num <= 0) {
+              day.style.background = "#3f5b69";
+
+              day.style.color = "#00000050";
+              day.style.cursor = "initial";
+              day.style.pointerEvents = "none";
+              if(m == 0){
+                day.innerText = dMes[m] + num;
+              }else {
+                day.innerText = dMes[m-1] + num;
+                
+              }
+              num = num +1;
+             
+              
+            }
+            if(day.innerText == ""){
+         
+              
+              
+            }
+          }
+          let x = dayoftheweek - 6; 
+          num = x ;
+          dayoftheweek = 0;
+          
+        }
+      }
+      /*
+        const vw = Math.max(
+          document.documentElement.clientWidth || 0,
+          window.innerWidth || 0
+        ); // Get viewport width
+      */
+
+      // Call the function initially and attach it to window resize event
+
+      function MoveC() {
+        const centralC = document.getElementById("centralC");
+        centralC.className = "centralC";
+        centralC.addEventListener("click", function () {
+          centralC.style.backgroundColor = "#2d4855";
+          centralC.style.color = "white";
+          centralC.style.transition = "background-color 0.3s";
+        });
+        document.addEventListener("DOMContentLoaded", function (event) {
+          let x = event.clientX;
+          let y = event.clientY;
+          centralC.addEventListener("drag", function () {
+            centralC.style.left = x;
+            centralC.style.top = y;
+            centralC.style.cursor = "move";
+          });
+        });
+      }
+
+      Calendario();
+      MoveC();
+    </script>
+  </body>
+</html>

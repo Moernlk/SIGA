@@ -6,10 +6,10 @@
     <title>HomePage</title>
     <link rel="icon" type="image/x-icon" href="/img/home/home.png" />
     <link rel="stylesheet" href="styles/background.css" />
+    <link rel="stylesheet" href="styles/cup.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/comandcenter.css" />
     <link rel="stylesheet" href="styles/secd-btns.css" />
-    <link rel="stylesheet" href="/styles/agenda/calendario-index.css" />
 
     <style>
       * {
@@ -57,14 +57,9 @@
     </div>
   </div>
   <body>
-    <div class="conteiner" style="justify-content: center; align-items: center">
-      <div class="comand-center-index" style="align-self: self-start">
-        <!-- AGENDA -->
-        <div
-          class="cnt"
-          id="area-btn-agenda"
-          style="position: absolute; left: -100px"
-        >
+    <div class="conteiner" style="justify-content: center">
+      <div class="comand-center-index">
+        <div class="cnt">
           <button class="btn-agenda" id="btn-agenda">
             <div>
               <img class="prg-btn-img" src="/img/agenda/agenda.png" />
@@ -107,9 +102,8 @@
             </button>
           </div>
         </div>
-        <!-- PROGRESSO -->
 
-        <div class="cnt" id="area-btn-progresso" style="position: absolute">
+        <div class="cnt">
           <button class="btn-progresso" id="btn-progresso">
             <div>
               <img class="prg-btn-img" src="/img/progresso/progress.png" />
@@ -143,13 +137,8 @@
             </button>
           </div>
         </div>
-        <!-- SECRETARIA -->
 
-        <div
-          class="cnt"
-          id="area-btn-recursos"
-          style="position: absolute; left: 100px"
-        >
+        <div class="cnt">
           <button class="btn-recursos" id="btn-recursos">
             <div>
               <img class="prg-btn-img" src="/img/recursos/recursos.png" />
@@ -184,114 +173,44 @@
           </div>
         </div>
       </div>
-      <!--div id="calendario">
-        <div class="calend-index">
-          <div id="agenda" draggable="true"></div>
-        </div>
-      </div-->
-
-      <script src="/script/calendario.js"></script>
-      <script type="text/javascript">
-        var isDown = false;
-        var isMov = false;
-        var position = [];
-        var mousePosition;
-        var loc;
-
-        const agenda = document.getElementById("area-btn-agenda");
-        const agdr = document.getElementById("btn-agenda");
-
-        const progresso = document.getElementById("area-btn-progresso");
-        const prog = document.getElementById("btn-progresso");
-
-        const recurso = document.getElementById("area-btn-recursos");
-        const recr = document.getElementById("btn-recursos");
-
-        agdr.addEventListener(
-          "mousedown",
-          function (e) {
-            isDown = true;
-            position = [
-              agenda.offsetLeft - e.clientX,
-              agenda.offsetTop - e.clientY,
-            ];
-            loc = 1;
-          },
-          true
-        );
-        recr.addEventListener(
-          "mousedown",
-          function (e) {
-            isDown = true;
-            position = [
-              recurso.offsetLeft - e.clientX,
-              recurso.offsetTop - e.clientY,
-            ];
-            loc = 3;
-          },
-          true
-        );
-        prog.addEventListener(
-          "mousedown",
-          function (e) {
-            isDown = true;
-            position = [
-              progresso.offsetLeft - e.clientX,
-              progresso.offsetTop - e.clientY,
-            ];
-            loc = 2;
-          },
-          true
-        );
-        document.addEventListener(
-          "mousemove",
-          function (e) {
-            isMov = true;
-            e.preventDefault();
-            if (isDown) {
-              mousePosition = {
-                x: e.clientX,
-                y: e.clientY,
-              };
-              if (loc == 1) {
-                agenda.style.left = mousePosition.x + position[0] + "px";
-                agenda.style.top = mousePosition.y + position[1] + "px";
-              }
-              if (loc == 2) {
-                progresso.style.left = mousePosition.x + position[0] + "px";
-                progresso.style.top = mousePosition.y + position[1] + "px";
-              }
-              if (loc == 3) {
-                recurso.style.left = mousePosition.x + position[0] + "px";
-                recurso.style.top = mousePosition.y + position[1] + "px";
-              }
-            }
-          },
-          true
-        );
-
-        document.addEventListener(
-          "mouseup",
-          function () {
-            isDown = false;
-          },
-          true
-        );
-       const cl = document.getElementById("calendario");
-        const agd = document.getElementById("btn-agenda");
-        cl.style.opacity = "0";
-        agd.addEventListener("dblclick", function () {
-          if (cl.style.opacity == "100") {
-            cl.style.opacity = "0";
-            agd.style.backgroundColor = "#a0ff97d2";
-          } else {
-            if (isDown) {
-              cl.style.opacity = "100";
-              agd.style.backgroundColor = "whitesmoke";
-            }
-          }
-        });
-      </script>
     </div>
-  </body>
+
+  <div id="horarios"></div>
+
+  <script type="text/javascript">
+
+    const horarios = document.getElementById("horarios");
+    horarios.style.border = "solid white 2px";
+    horarios.style.display = "flex"
+    horarios.style.flexDirection = "column"
+    horarios.style.alignItems = "center"
+    horarios.style.justifyContent = "top"
+    
+    horarios.style.position = "absolute";
+    horarios.style.top = 0;
+    horarios.style.left = 0;
+    horarios.style.width = "24.7dvw";
+    horarios.style.height = "100dvh";
+    
+    const titulo = document.createElement("div");
+    titulo.id = "titulo";
+    titulo.style.position = "relative";
+    titulo.style.display = "flex";
+    titulo.style.flexDirection = "row"
+    titulo.style.backgroundColor = "green"
+    titulo.style.width = "80%"
+    titulo.style.height = "5%"
+    
+    
+
+    horarios.appendChild(titulo);
+    
+
+
+
+
+  </script>
+
+
+</body>
 </html>
