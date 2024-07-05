@@ -15,9 +15,75 @@
       * {
         -webkit-user-drag: none;
       }
+      .geral-page {
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        justify-content: start;
+        background-color: black;
+        border: solid black;
+        width: 25dvw;
+
+        top: 50%;
+        left: 50%;
+        height: fit-content;
+        z-index: 1;
+      }
+      .mover {
+        position: relative;
+        height: 100%;
+        width: fit-content;
+        font-size: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        color: whitesmoke;
+        padding-bottom: 0;
+        background-color: black;
+        border: none;
+
+        -webkit-user-select: none;
+      }
+      .mover:hover {
+        cursor: move;
+      }
+
+      .uprline {
+        position: relative;
+        display: flex;
+        justify-content: end;
+
+        width: 100%;
+        height: fit-content;
+        border: rgb(255, 255, 255) solid 1px;
+      }
+      .btn-close {
+        position: relative;
+        height: 100%;
+        width: fit-content;
+        font-size: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        color: whitesmoke;
+        padding-bottom: 0;
+        background-color: black;
+        border: none;
+      }
+      .main-page {
+        display: flex;
+        position: relative;
+
+        flex-direction: column;
+        width: 100%;
+        border: 1px solid green;
+        height: fit-content;
+      }
     </style>
   </head>
+
   <body id="body">
+    <!--BACKGROUND-->
     <script type="text/javascript">
       const body = document.getElementById("body");
 
@@ -37,14 +103,37 @@
       }
       bg();
     </script>
+    <!--PAGINAS-->
+    <script type="text/javascript">
+      const page = document.createElement("div");
+      page.className = "geral-page";
+      const uprline = document.createElement("div");
+      uprline.className = "uprline";
+      const mover = document.createElement("div");
+      mover.className = "mover";
+      mover.innerHTML = "O";
+      const bt_close = document.createElement("button");
+      bt_close.innerHTML = "x";
+      bt_close.addEventListener("mousedown", function(e){
+        page.remove();
+      })
+      bt_close.className = "btn-close";
+      const main_page = document.createElement("div");
+      main_page.className = "main-page";
 
-    <div id="calendario">
-      <div class="calend-index">
-        <div id="agenda" draggable="true"></div>
-      </div>
-    </div>
+      body.appendChild(page);
+      page.appendChild(uprline);
+      uprline.appendChild(mover);
+      uprline.appendChild(bt_close);
 
-    <div class="conteiner" style="justify-content: center; align-items: center">
+      page.appendChild(main_page);
+    </script>
+
+    <div
+      class="conteiner"
+      id="conteiner"
+      style="justify-content: center; align-items: center"
+    >
       <div class="comand-center-index" style="align-self: self-start">
         <!-- AGENDA -->
         <div
@@ -53,6 +142,7 @@
           style="position: absolute; left: -5dvw"
         >
           <button class="btn-agenda" id="btn-agenda">
+            <span class="movivel"></span>
             <div>
               <img class="prg-btn-img" src="/img/agenda/agenda.png" />
             </div>
@@ -97,6 +187,8 @@
         <!-- PROGRESSO -->
         <div class="cnt" id="area-btn-progresso" style="position: absolute">
           <button class="btn-progresso" id="btn-progresso">
+            <span class="movivel"></span>
+
             <div>
               <img class="prg-btn-img" src="/img/progresso/progress.png" />
             </div>
@@ -137,6 +229,8 @@
           style="position: absolute; left: 5dvw"
         >
           <button class="btn-recursos" id="btn-recursos">
+            <span class="movivel"></span>
+
             <div>
               <img class="prg-btn-img" src="/img/recursos/recursos.png" />
             </div>
@@ -174,8 +268,8 @@
       <!--CALENDARIO-->
       <script src="/script/calendario.js"></script>
       <script type="text/javascript">
-        const cl = document.getElementById("calendario");
-        cl.style.opacity = "100";
+        const cl = document.getElementById("pg-calendario");
+        cl.style.opacity = "0";
         /* agd.addEventListener("click", function () {
           if (cl.style.opacity == "100") {
             cl.style.opacity = "0";
@@ -198,17 +292,27 @@
         // POSIÇÃO DO MOUSE
         var mousePosition;
 
-        //DETECTA QUAL BOTÃOFOI MOVIDO
+        //DETECTA QUAL BOTÃO FOI MOVIDO
         var loc;
+
+        
+
 
         const agenda = document.getElementById("area-btn-agenda");
         const agdr = document.getElementById("btn-agenda");
-
         const progresso = document.getElementById("area-btn-progresso");
         const prog = document.getElementById("btn-progresso");
 
         const recurso = document.getElementById("area-btn-recursos");
         const recr = document.getElementById("btn-recursos");
+
+        const pai_cn = mover.parentElement.className;
+        const parent_cn = mover.parentElement;
+        const gparent_cn = parent_cn.parentElement.className;
+        const pai = document.getElementsByClassName(pai_cn);
+        const vo = document.getElementsByClassName(gparent_cn);
+        //console.log(pai);
+        //console.log(recurso);
 
         // DETECTOR DOS DIVS
         agdr.addEventListener(
@@ -220,6 +324,19 @@
               agenda.offsetTop - e.clientY,
             ];
             loc = 1;
+          },
+          true
+        );
+
+        prog.addEventListener(
+          "mousedown",
+          function (e) {
+            isDown = true;
+            position = [
+              progresso.offsetLeft - e.clientX,
+              progresso.offsetTop - e.clientY,
+            ];
+            loc = 2;
           },
           true
         );
@@ -235,19 +352,19 @@
           },
           true
         );
-        prog.addEventListener(
+        mover.addEventListener(
           "mousedown",
           function (e) {
             isDown = true;
             position = [
-              progresso.offsetLeft - e.clientX,
-              progresso.offsetTop - e.clientY,
+              vo[0].offsetLeft - e.clientX,
+              vo[0].offsetTop - e.clientY,
             ];
-            loc = 2;
+            loc = 4;
           },
           true
         );
-          // MOVIMENTO DO MOUSE
+        // MOVIMENTO DO MOUSE
         document.addEventListener(
           "mousemove",
           function (e) {
@@ -274,6 +391,10 @@
                   recurso.style.left = mousePosition.x + position[0] + "px";
                   recurso.style.top = mousePosition.y + position[1] + "px";
                 }
+                if (loc == 4) {
+                  vo[0].style.left = mousePosition.x + position[0] + "px";
+                  vo[0].style.top = mousePosition.y + position[1] + "px";
+                }
               } else {
                 isDown = false;
               }
@@ -286,7 +407,7 @@
           },
           true
         );
-          // DETECTOR DA PARADA
+        // DETECTOR DA PARADA
         document.addEventListener(
           "mouseup",
           function () {
@@ -296,8 +417,6 @@
           },
           true
         );
-
-
 
         /*const cl = document.getElementById("calendario");
         const agd = document.getElementById("btn-agenda");
@@ -319,5 +438,3 @@
     </div>
   </body>
 </html>
-
-
