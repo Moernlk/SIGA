@@ -14,6 +14,7 @@
     <style>
       * {
         -webkit-user-drag: none;
+        pointer-events: unset;
       }
       .geral-page {
         display: flex;
@@ -21,14 +22,22 @@
         flex-direction: column;
         justify-content: start;
         background-color: black;
-        border: solid black;
+        border: 3px solid black;
         width: 25dvw;
 
         top: 50%;
         left: 50%;
         height: fit-content;
+        min-height: 25dvh;
+        box-shadow: 1px 1px 100px;
         z-index: 1;
+        transition: box-shadow 2s;
       }
+      .geral-page:active {
+        box-shadow: 1px 1px 150px;
+        transition: box-shadow 2s;
+      }
+
       .mover {
         position: relative;
         height: 100%;
@@ -42,7 +51,7 @@
         background-color: black;
         border: none;
 
-        -webkit-user-select: none;
+        user-select: none;
       }
       .mover:hover {
         cursor: move;
@@ -55,7 +64,7 @@
 
         width: 100%;
         height: fit-content;
-        border: rgb(255, 255, 255) solid 1px;
+        border: rgb(255, 255, 255) 1px;
       }
       .btn-close {
         position: relative;
@@ -70,14 +79,18 @@
         background-color: black;
         border: none;
       }
+      .btn-close:hover {
+        cursor: pointer;
+      }
       .main-page {
         display: flex;
         position: relative;
 
         flex-direction: column;
         width: 100%;
-        border: 1px solid green;
-        height: fit-content;
+        border: none;
+        border-top: 1px solid #87a9ba94;
+        height: 22dvh;
       }
     </style>
   </head>
@@ -105,20 +118,75 @@
     </script>
     <!--PAGINAS-->
     <script type="text/javascript">
+      /*
+
+      CRIAR FUNÇÃO QUE CRIE UMA PAGINA PARA CADA FUNÇÃO
+
+
+      */
+      var contagem = 0;
+      function criarPagina() {
+        contagem = contagem + 1;
+        console.log(contagem);
+        const page = document.createElement("div");
+        page.className = "geral-page";
+        page.id = contagem;
+        const uprline = document.createElement("div");
+        uprline.className = "uprline";
+        const mover = document.createElement("div");
+        mover.className = "mover";
+        mover.innerHTML =
+          '<img class="sec-btn-img" src="/img/moverpfvr.png" />';
+        const bt_close = document.createElement("button");
+        bt_close.innerHTML =
+          '<img class="sec-btn-img" src="/img/home/closer.png" />';
+        bt_close.addEventListener("mousedown", function (e) {
+          contagem = contagem - 1;
+          page.remove();
+          console.log(contagem);
+        });
+        bt_close.className = "btn-close";
+        const main_page = document.createElement("div");
+        page.innerHTML = "";
+        main_page.className = "main-page";
+
+        mover.addEventListener(
+          "mousedown",
+          function (e) {
+            isDown = true;
+            position = [
+              vo[0].offsetLeft - e.clientX,
+              vo[0].offsetTop - e.clientY,
+            ];
+            loc = 4;
+          },
+          true
+        );
+
+        body.appendChild(page);
+        page.appendChild(uprline);
+        uprline.appendChild(mover);
+        uprline.appendChild(bt_close);
+
+        page.appendChild(main_page);
+      }
+
       const page = document.createElement("div");
       page.className = "geral-page";
       const uprline = document.createElement("div");
       uprline.className = "uprline";
       const mover = document.createElement("div");
-      mover.className = "mover";
-      mover.innerHTML = "O";
+      mover.classList = "mover";
+      mover.innerHTML = '<img class="sec-btn-img" src="/img/moverpfvr.png" />';
       const bt_close = document.createElement("button");
-      bt_close.innerHTML = "x";
-      bt_close.addEventListener("mousedown", function(e){
+      bt_close.innerHTML =
+        '<img class="sec-btn-img" src="/img/home/closer.png" />';
+      bt_close.addEventListener("mousedown", function (e) {
         page.remove();
-      })
+      });
       bt_close.className = "btn-close";
       const main_page = document.createElement("div");
+      page.innerHTML = "";
       main_page.className = "main-page";
 
       body.appendChild(page);
@@ -129,6 +197,7 @@
       page.appendChild(main_page);
     </script>
 
+    <!-- PAINEL DE CONTROLE-->
     <div
       class="conteiner"
       id="conteiner"
@@ -164,7 +233,7 @@
                 </div>
               </a>
             </button>
-            <button class="btns-agd" id="btn-secd4">
+            <button class="btns-agd" id="btn-secd4" onclick="criarPagina()">
               <div>
                 <img class="sec-btn-img" src="/img/agenda/horarios.png" />
               </div>
@@ -268,7 +337,7 @@
       <!--CALENDARIO-->
       <script src="/script/calendario.js"></script>
       <script type="text/javascript">
-        const cl = document.getElementById("pg-calendario");
+        const cl = document.getElementById("calendario");
         cl.style.opacity = "0";
         /* agd.addEventListener("click", function () {
           if (cl.style.opacity == "100") {
@@ -295,9 +364,6 @@
         //DETECTA QUAL BOTÃO FOI MOVIDO
         var loc;
 
-        
-
-
         const agenda = document.getElementById("area-btn-agenda");
         const agdr = document.getElementById("btn-agenda");
         const progresso = document.getElementById("area-btn-progresso");
@@ -311,6 +377,7 @@
         const gparent_cn = parent_cn.parentElement.className;
         const pai = document.getElementsByClassName(pai_cn);
         const vo = document.getElementsByClassName(gparent_cn);
+        console.log(vo)
         //console.log(pai);
         //console.log(recurso);
 
