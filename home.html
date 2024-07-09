@@ -127,19 +127,23 @@
       var contagem = 0;
       function criarPagina() {
         contagem = contagem + 1;
+
         console.log(contagem);
         const page = document.createElement("div");
         page.className = "geral-page";
         page.id = contagem;
         const uprline = document.createElement("div");
         uprline.className = "uprline";
+        uprline.id = contagem;
         const mover = document.createElement("div");
         mover.className = "mover";
+        mover.id = contagem;
         mover.innerHTML =
           '<img class="sec-btn-img" src="/img/moverpfvr.png" />';
         const bt_close = document.createElement("button");
+        bt_close.id = contagem;
         bt_close.innerHTML =
-          '<img class="sec-btn-img" src="/img/home/closer.png" />';
+          '<img class="sec-btn-img" id="" src="/img/home/closer.png" />';
         bt_close.addEventListener("mousedown", function (e) {
           contagem = contagem - 1;
           page.remove();
@@ -154,9 +158,12 @@
           "mousedown",
           function (e) {
             isDown = true;
+            var pai_id = Math.abs(findparentid(e.target));
+            console.log("pai_id: ", pai_id);
+            console.log("contagem: ", contagem);
             position = [
-              vo[0].offsetLeft - e.clientX,
-              vo[0].offsetTop - e.clientY,
+              vo[contagem - pai_id].offsetLeft - e.clientX,
+              vo[contagem - pai_id].offsetTop - e.clientY,
             ];
             loc = 4;
           },
@@ -173,20 +180,28 @@
 
       const page = document.createElement("div");
       page.className = "geral-page";
+
       const uprline = document.createElement("div");
       uprline.className = "uprline";
+
       const mover = document.createElement("div");
       mover.classList = "mover";
+
       mover.innerHTML = '<img class="sec-btn-img" src="/img/moverpfvr.png" />';
       const bt_close = document.createElement("button");
       bt_close.innerHTML =
         '<img class="sec-btn-img" src="/img/home/closer.png" />';
       bt_close.addEventListener("mousedown", function (e) {
         page.remove();
+        contagem = contagem - 1;
       });
+
       bt_close.className = "btn-close";
+
       const main_page = document.createElement("div");
+
       page.innerHTML = "";
+
       main_page.className = "main-page";
 
       body.appendChild(page);
@@ -195,6 +210,21 @@
       uprline.appendChild(bt_close);
 
       page.appendChild(main_page);
+
+      function findparentid(neto) {
+        console.log(neto);
+        const pai_cn = neto.parentElement;
+        const parent_cn = pai_cn.parentElement;
+        console.log(parent_cn);
+
+        var gparent_cn = parent_cn.parentElement.id;
+        var page_click = gparent_cn - contagem;
+        console.log(page_click);
+        console.log(parseInt(gparent_cn));
+        const pai = document.getElementsByClassName(pai_cn);
+        const vo = document.getElementsByClassName(gparent_cn);
+        return page_click;
+      }
     </script>
 
     <!-- PAINEL DE CONTROLE-->
@@ -233,16 +263,19 @@
                 </div>
               </a>
             </button>
+
             <button class="btns-agd" id="btn-secd4" onclick="criarPagina()">
               <div>
                 <img class="sec-btn-img" src="/img/agenda/horarios.png" />
               </div>
               <div id="hora-name" class="popup-informations">Horarios</div>
             </button>
-            <button class="btns-agd" id="btn-secd3">
+
+            <button class="btns-agd" id="btn-secd3" onclick="criarPagina()">
               <div>
                 <img class="sec-btn-img" src="/img/agenda/provas.png" />
               </div>
+
               <div
                 id="prova-name"
                 style="left: 1dvw"
@@ -335,7 +368,7 @@
       </div>
 
       <!--CALENDARIO-->
-      <script src="/script/calendario.js"></script>
+      <!--script src="/script/calendario.js"></script>
       <script type="text/javascript">
         const cl = document.getElementById("calendario");
         cl.style.opacity = "0";
@@ -348,7 +381,7 @@
             agd.style.backgroundColor = "whitesmoke";
           } 
         });*/
-      </script>
+      </script !-->
 
       <!-- MOVIMENTO DAS DIVs -->
       <script type="text/javascript">
@@ -374,10 +407,13 @@
 
         const pai_cn = mover.parentElement.className;
         const parent_cn = mover.parentElement;
+        console.log(parent_cn);
+
         const gparent_cn = parent_cn.parentElement.className;
+        console.log(gparent_cn);
         const pai = document.getElementsByClassName(pai_cn);
         const vo = document.getElementsByClassName(gparent_cn);
-        console.log(vo)
+        console.log(vo);
         //console.log(pai);
         //console.log(recurso);
 
@@ -422,12 +458,18 @@
         mover.addEventListener(
           "mousedown",
           function (e) {
+            //debugger
             isDown = true;
+            var pai_id = Math.abs(findparentid(e.target));
+
+            const son = e.target;
+            const gpr = son;
             position = [
-              vo[0].offsetLeft - e.clientX,
-              vo[0].offsetTop - e.clientY,
+              vo[contagem - pai_id].offsetLeft - e.clientX,
+              vo[contagem - pai_id].offsetTop - e.clientY,
             ];
             loc = 4;
+            console.log(vo);
           },
           true
         );
@@ -442,6 +484,8 @@
                 y: e.clientY,
               };
               // OBRIGA A ESTAR DENTRO DA TELA
+              var pai_id = Math.abs(findparentid(e.target));
+
               if (
                 window.innerWidth > mousePosition.x == true &&
                 mousePosition.x >= 0 == true
@@ -459,8 +503,10 @@
                   recurso.style.top = mousePosition.y + position[1] + "px";
                 }
                 if (loc == 4) {
-                  vo[0].style.left = mousePosition.x + position[0] + "px";
-                  vo[0].style.top = mousePosition.y + position[1] + "px";
+                  vo[contagem - pai_id].style.left =
+                    mousePosition.x + position[0] + "px";
+                  vo[contagem - pai_id].style.top =
+                    mousePosition.y + position[1] + "px";
                 }
               } else {
                 isDown = false;
